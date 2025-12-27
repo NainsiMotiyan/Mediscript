@@ -15,10 +15,7 @@ connectCloudinary();
 
 // middlewares
 app.use(express.json());
-app.use(cors({
-  origin: "https://mediscript-frontend.onrender.com",
-  credentials: true
-}));
+app.use(cors());
 
 // api endpoints
 app.use('/api/doctor',doctorRouter)
@@ -26,6 +23,9 @@ app.use("/api/admin", adminRouter);
 app.use('/api/user',userRouter)
 app.get("/", (req, res) => {
   res.send("API WORKING");
+});
+
+app.listen(port, () => console.log("Server started", port));
 });
 
 app.listen(port, () => console.log("Server started", port));
